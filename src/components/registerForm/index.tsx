@@ -25,7 +25,7 @@ const OtpForm = () => {
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <div className={styles.inputBox}>
           <label>
-            کد اعتبارسنجی:: <span className={styles.required}>*</span>
+            کد اعتبارسنجی: <span className={styles.required}>*</span>
           </label>
           <input
             type="text"
