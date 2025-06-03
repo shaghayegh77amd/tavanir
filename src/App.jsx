@@ -1,20 +1,17 @@
-import { useState } from "react";
-import { Route, Navigate } from "react-router-dom";
-import "./App.css";
+import { Routes, Route, Navigate } from "react-router-dom";
+import StartPage from "./pages/start";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
+    <div className="container">
       <Routes>
-        <Route path="/" element={<Navigate to="/form" />} />
-        <Route path="/form" element={<FormPage />} />
+        <Route path="/" element={<StartPage />} />
+        {/* <Route path="/form" element={<FormPage />} />
         <Route path="/otp" element={<OtpPage />} />
-        <Route path="/quiz" element={<QuizPage />} />
+        <Route path="/quiz" element={<QuizPage />} /> */}
         <Route path="*" element={<div>صفحه پیدا نشد!</div>} />
       </Routes>
-    </>
+    </div>
   );
 }
 
