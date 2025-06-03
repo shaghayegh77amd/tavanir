@@ -1,7 +1,15 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
-const AnswerItem = ({ label, value, selectedValue, onChange, index, type }) => {
+const AnswerItem = ({
+  label,
+  value,
+  selectedValue,
+  onChange,
+  index,
+  type,
+  icon,
+}) => {
   return (
     <label className={styles.item}>
       <input
@@ -19,7 +27,10 @@ const AnswerItem = ({ label, value, selectedValue, onChange, index, type }) => {
         <span className={styles.circle} />
       </div>
       {type === "text" ? (
-        <span className={styles.label}>{label}</span>
+        <span className={styles.label}>
+          {label}
+          {icon && <img src={icon} alt={label} />}
+        </span>
       ) : (
         <img src={label} alt="" />
       )}

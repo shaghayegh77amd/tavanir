@@ -6,15 +6,17 @@ export const QUESTIONS = [
     correct: 1,
     backGround: "./../../../public/images/back1.png",
     type: "text",
+    answerIcon: [],
   },
   {
     title: "کدوم خونه بهتر و بهینه‌تر از کولر استفاده می‌کنه؟",
-    ImageAnswer: [
+    answer: [
       "./../../../public/images/answer1.png",
       "./../../../public/images/answer2.png",
     ],
     correct: 1,
     type: "image",
+    answerIcon: [],
   },
   {
     title:
@@ -23,6 +25,7 @@ export const QUESTIONS = [
     correct: 1,
     backGround: "./../../../public/images/back3.png",
     type: "text",
+    answerIcon: [],
   },
   {
     title: "پوشال کولر آبی رو کی باید عوض کنیم تا هم خنک کنه، هم برق هدر نره؟",
@@ -30,6 +33,7 @@ export const QUESTIONS = [
     correct: 2,
     backGround: "./../../../public/images/back4.png",
     type: "text",
+    answerIcon: [],
   },
   {
     title:
@@ -37,5 +41,10 @@ export const QUESTIONS = [
     answer: ["۱۱ صبح تا ۵ عصر", "۱ بامداد تا ۶ صبح", "۶ عصر تا ۱۱ شب"],
     correct: 0,
     type: "text",
+    answerIcon: [
+      "./../../../public/images/icon1.png",
+      "./../../../public/images/icon2.png",
+      "./../../../public/images/icon3.png",
+    ],
   },
 ];
