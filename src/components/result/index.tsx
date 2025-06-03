@@ -44,7 +44,7 @@ const Result = ({ wrongIndexes }) => {
       )}
       <a
         className="button"
-        onClick={() => (winner ? navigate("/login") : navigate(0))}
+        onClick={() => (winner ? navigate("/register") : navigate(0))}
       >
         {winner ? "تکمیل اطلاعات" : "دوباره تلاش میکنم :)"}
       </a>
