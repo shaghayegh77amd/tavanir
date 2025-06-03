@@ -4,8 +4,11 @@ import Pagination from "../../components/pagination";
 
 const QuizPage = () => {
   return (
-    <div className={styles.startPage}>
+    <div className={styles.quizPage}>
       <Pagination questionNumber={0} />
+      <a href="/quiz" className="button">
+        بعدی
+      </a>
     </div>
   );
 };

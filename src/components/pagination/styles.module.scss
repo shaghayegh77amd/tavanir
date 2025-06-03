@@ -1,7 +1,20 @@
-.Pagination {
-  .wrapper {
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  .item {
     display: flex;
-    justify-content: center;
     gap: 8px;
+    align-items: center;
+    .number {
+      color: #878790;
+      &.active {
+        color: #000;
+      }
+    }
+    .arrow {
+      width: 24px;
+      height: 6px;
+    }
   }
 }

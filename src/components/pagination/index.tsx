@@ -6,7 +6,7 @@ const Pagination = ({ questionNumber }) => {
   return (
     <div className={styles.pagination}>
       {steps.map((step, index) => (
-        <div className={styles.wrapper} key={index}>
+        <div className={styles.item} key={index}>
           <div
             className={`${styles.number} ${
               questionNumber === index ? styles.active : ""
