@@ -11,12 +11,6 @@
     font-size: 20px;
     margin-bottom: 40px;
   }
-  .form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
   .inputBox {
     display: flex;
     gap: 8px;
@@ -24,7 +18,7 @@
   }
   label {
     display: block;
-    width: 168px;
+    width: 220px;
   }
 
   input {
@@ -48,15 +42,4 @@
 
 .required {
   color: red;
-}
-
-.submit-button {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #ccc;
-  border: none;
-  border-radius: 50px;
-  font-size: 1rem;
-  color: white;
-  cursor: pointer;
 }
