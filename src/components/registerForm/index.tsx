@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import styles from "./styled.module.scss";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 type FormValues = {
   FirstName: string;
@@ -17,6 +18,7 @@ const RegisterForm = () => {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<FormValues>();
+  const navigate = useNavigate();
 
   const sendRegisterData = async (data: FormValues) => {
     const response = await fetch(
@@ -41,6 +43,7 @@ const RegisterForm = () => {
     mutationFn: sendRegisterData,
     onSuccess: (data) => {
       toast.success(data.message);
+      navigate("/otp");
     },
     onError: () => {
       toast.error("خطایی رخ داده است.");

@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import styles from "./styles.module.scss";
 import { useNavigate } from "react-router-dom";
 
-const Result = ({ wrongIndexes }) => {
+const Result: FC<{ wrongIndexes: [] }> = ({ wrongIndexes }) => {
   const winner = !wrongIndexes.length;
   const navigate = useNavigate();
   return (
