@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import styles from "./styled.module.scss";
 import { useMutation } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 type FormValues = {
   FirstName: string;
@@ -19,7 +20,7 @@ const RegisterForm = () => {
 
   const sendRegisterData = async (data: FormValues) => {
     const response = await fetch(
-      "http://192.168.1.13:8585/api/v1/users/register",
+      `${import.meta.env.VITE_API_URL}users/register`,
       {
         method: "POST",
         headers: {
@@ -39,22 +40,19 @@ const RegisterForm = () => {
   const mutation = useMutation({
     mutationFn: sendRegisterData,
     onSuccess: (data) => {
-      console.log("✅ موفقیت:", data);
-      // اینجا مثلاً می‌تونی کاربر رو به صفحه‌ی بعد ببری یا پیام موفقیت نشون بدی
+      toast.success(data.message);
     },
-    onError: (error) => {
-      console.error("❌ خطا:", error);
+    onError: () => {
+      toast.error("خطایی رخ داده است.");
     },
   });
 
   const onSubmit = (data: FormValues) => {
-    console.log("اطلاعات ارسال‌شده:", data);
     mutation.mutate(data);
   };
 
   return (
     <div className={styles.form}>
-      lll
       <img src="./../../../public/images/account.png" alt="card icon" />
       <h2 className={styles.title}>اطلاعاتت رو وارد کن:</h2>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
