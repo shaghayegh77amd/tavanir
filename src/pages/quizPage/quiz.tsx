@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./styles.module.scss";
 import Pagination from "../../components/pagination";
 import AnswerItem from "../../components/answerItem";
@@ -10,6 +10,29 @@ const QuizPage = () => {
     []
   );
   const [questionNumber, setQuestionNumber] = useState(0);
+
+  useEffect(() => {
+    QUESTIONS.forEach((question) => {
+      if (question.backGround) {
+        const img = new Image();
+        img.src = question.backGround;
+      }
+
+      question.answer?.forEach((ans) => {
+        if (typeof ans === "string" && ans.endsWith(".png")) {
+          const img = new Image();
+          img.src = ans;
+        }
+      });
+
+      question.answerIcon?.forEach((icon) => {
+        if (icon) {
+          const img = new Image();
+          img.src = icon;
+        }
+      });
+    });
+  }, []);
 
   const handleSelect = (value: number, index: number) => {
     setSelected((prev: { index: number; answer: number }[]) => {

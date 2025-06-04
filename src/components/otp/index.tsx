@@ -48,7 +48,7 @@ const OtpForm: FC<{ phone?: string; onResend: () => void }> = ({
     onSuccess: (data) => {
       if (data.success) {
         toast.success(data.message);
-        navigate("/share");
+        navigate("/certificate");
       } else {
         toast.error(data.message);
       }
