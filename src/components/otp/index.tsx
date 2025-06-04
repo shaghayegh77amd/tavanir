@@ -1,32 +1,60 @@
-import React from "react";
+import React, { FC } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./styled.module.scss";
 import { useMutation } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+import OtpTimer from "../otpTimer";
+import { useNavigate } from "react-router-dom";
 
 type FormValues = {
-  otp: string;
+  OTPCode: string;
 };
 
-const OtpForm = () => {
+const OtpForm: FC<{ phone: string; onResend: () => void }> = ({
+  phone,
+  onResend,
+}) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { isValid },
   } = useForm<FormValues>();
+
+  const navigate = useNavigate();
+
+  const sendOtp = async (data: FormValues) => {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/users/verifyOTP`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...data, MobileNumber: phone }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("ارسال اطلاعات با خطا مواجه شد.");
+    }
+
+    return await response.json();
+  };
   const mutation = useMutation({
     mutationFn: sendOtp,
     onSuccess: (data) => {
-      console.log("✅ موفقیت:", data);
-      // اینجا می‌تونی به صفحه‌ی دیگه ریدایرکت کنی یا پیام موفقیت نشون بدی
+      toast.success(data.message);
+      if (data.success) {
+        navigate("/share");
+      }
     },
-    onError: (error) => {
-      console.error("❌ خطا در ارسال:", error);
-      // پیام خطا نمایش بده
+    onError: () => {
+      toast.error("خطایی رخ داده است.");
     },
   });
 
   const onSubmit = (data: FormValues) => {
-    console.log("اطلاعات ارسال‌شده:", data);
+    mutation.mutate(data);
   };
 
   return (
@@ -41,7 +69,7 @@ const OtpForm = () => {
           </label>
           <input
             type="text"
-            {...register("otp", { required: true })}
+            {...register("OTPCode", { required: true })}
             placeholder="وارد کنید"
           />
         </div>
@@ -50,6 +78,7 @@ const OtpForm = () => {
           ثبت
         </button>
       </form>
+      <OtpTimer onResend={onResend} />
     </div>
   );
 };
