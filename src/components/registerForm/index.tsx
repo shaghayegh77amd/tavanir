@@ -43,9 +43,11 @@ const RegisterForm = () => {
   const mutation = useMutation({
     mutationFn: sendRegisterData,
     onSuccess: (data) => {
-      toast.success(data.message);
       if (data.success) {
         setFormData(data);
+        toast.success(data.message);
+      } else {
+        toast.error(data.message);
       }
     },
     onError: () => {

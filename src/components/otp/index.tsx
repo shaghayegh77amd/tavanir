@@ -43,9 +43,11 @@ const OtpForm: FC<{ phone: string; onResend: () => void }> = ({
   const mutation = useMutation({
     mutationFn: sendOtp,
     onSuccess: (data) => {
-      toast.success(data.message);
       if (data.success) {
+        toast.success(data.message);
         navigate("/share");
+      } else {
+        toast.error(data.message);
       }
     },
     onError: () => {
