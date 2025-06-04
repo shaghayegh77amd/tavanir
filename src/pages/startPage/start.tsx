@@ -1,10 +1,11 @@
-import React from "react";
 import styles from "./styles.module.scss";
 
 const StartPage = () => {
   return (
     <div className={styles.startPage}>
-      <img src="./../../public/images/start.png" />
+      <div className={styles.imageBox}>
+        <img src="/images/start.png" />
+      </div>
       <p className={styles.title}>هوای خنک خوبه، ولی مصرف برق بالا نه!</p>
       <p className={styles.text}>
         یه بازی باحال داریم که توش یاد می‌گیری چطور از کولرت بهینه استفاده کنی.

@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./styles.module.scss";
 
 const Pagination = ({ questionNumber }) => {
@@ -18,7 +17,7 @@ const Pagination = ({ questionNumber }) => {
           {/* عکس بین اعداد، جز آخرین عدد */}
           {index < steps.length - 1 && (
             <img
-              src="./../../../public/images/arrow.png"
+              src="././images/arrow.png"
               alt="arrow"
               className={styles.arrow}
             />

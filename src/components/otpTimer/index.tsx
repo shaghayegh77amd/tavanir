@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 const OtpTimer: FC<{ onResend: () => void }> = ({ onResend }) => {
   const [timeLeft, setTimeLeft] = useState(120);

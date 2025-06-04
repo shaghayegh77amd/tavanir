@@ -3,16 +3,13 @@ export const QUESTIONS = [
     title:
       "برای صرفه‌جویی، کولر گازی رو روی چند درجه و کولر آبی رو روی چه حالتی بذاریم؟",
     answer: ["۱۶ درجه - دور تند", "۲۵ درجه - دور کند", "۳۰ درجه - دور کند"],
-    backGround: "./../../../public/images/back1.png",
+    backGround: "/images/back1.png",
     type: "text",
     answerIcon: [],
   },
   {
     title: "کدوم خونه بهتر و بهینه‌تر از کولر استفاده می‌کنه؟",
-    answer: [
-      "./../../../public/images/answer1.png",
-      "./../../../public/images/answer2.png",
-    ],
+    answer: ["/images/answer1.png", "/images/answer2.png"],
     type: "image",
     answerIcon: [],
   },
@@ -20,14 +17,14 @@ export const QUESTIONS = [
     title:
       "فکر می‌کنی چند درجه کم کردن دمای کولر، می‌تونه تا ۱۰ درصد مصرف برق رو بیشتر کنه؟",
     answer: ["هر ۵ درجه", "هر یک درجه", "اصلا تاثیری نداره"],
-    backGround: "./../../../public/images/back3.png",
+    backGround: "/images/back3.png",
     type: "text",
     answerIcon: [],
   },
   {
     title: "پوشال کولر آبی رو کی باید عوض کنیم تا هم خنک کنه، هم برق هدر نره؟",
     answer: ["هر سه سال", "هر وقتی خراب شد", "هر تابستون"],
-    backGround: "./../../../public/images/back4.png",
+    backGround: "/images/back4.png",
     type: "text",
     answerIcon: [],
   },
@@ -36,11 +33,7 @@ export const QUESTIONS = [
       "تو تابستونا، معمولا برق چه ساعت‌هایی بیشتر مصرف میشه و باید حواسمون جمع باشه؟",
     answer: ["۱۱ صبح تا ۵ عصر", "۱ بامداد تا ۶ صبح", "۶ عصر تا ۱۱ شب"],
     type: "text",
-    answerIcon: [
-      "./../../../public/images/icon1.png",
-      "./../../../public/images/icon2.png",
-      "./../../../public/images/icon3.png",
-    ],
+    answerIcon: ["/images/icon1.png", "/images/icon2.png", "/images/icon3.png"],
   },
 ];
 

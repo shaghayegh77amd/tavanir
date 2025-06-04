@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import styles from "./styles.module.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -8,11 +8,7 @@ const Result: FC<{ wrongIndexes: [] }> = ({ wrongIndexes }) => {
   return (
     <div className={styles.result}>
       <img
-        src={
-          winner
-            ? "./../../../public/images/winner.png"
-            : "./../../../public/images/loser.png"
-        }
+        src={winner ? "././images/winner.png" : "././images/loser.png"}
         alt="result"
       />
       {winner ? (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./styles.module.scss";
 import Pagination from "../../components/pagination";
 import AnswerItem from "../../components/answerItem";

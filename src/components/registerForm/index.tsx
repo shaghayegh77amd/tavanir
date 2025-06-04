@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./styled.module.scss";
 import { useMutation } from "@tanstack/react-query";
@@ -17,6 +17,7 @@ const RegisterForm = () => {
     register,
     handleSubmit,
     formState: { errors, isValid },
+    getValues,
   } = useForm<FormValues>();
 
   const [formData, setFormData] = useState<FormValues | null>(null);
@@ -44,7 +45,7 @@ const RegisterForm = () => {
     mutationFn: sendRegisterData,
     onSuccess: (data) => {
       if (data.success) {
-        setFormData(data);
+        setFormData(getValues());
         toast.success(data.message);
       } else {
         toast.error(data.message);
@@ -61,9 +62,12 @@ const RegisterForm = () => {
 
   return (
     <>
+      {console.log(formData)}
       {!Boolean(formData) ? (
         <div className={styles.form}>
-          <img src="./../../../public/images/account.png" alt="card icon" />
+          <div className={styles.imageBox}>
+            <img src="././images/account.png" alt="card icon" />
+          </div>
           <h2 className={styles.title}>اطلاعاتت رو وارد کن:</h2>
           <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
             <div className={styles.inputBox}>

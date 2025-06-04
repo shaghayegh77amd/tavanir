@@ -1,4 +1,3 @@
-import React, { FC } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./styled.module.scss";
 import { useMutation } from "@tanstack/react-query";
@@ -10,7 +9,7 @@ type FormValues = {
   OTPCode: string;
 };
 
-const OtpForm: FC<{ phone: string; onResend: () => void }> = ({
+const OtpForm: FC<{ phone?: string; onResend: () => void }> = ({
   phone,
   onResend,
 }) => {
@@ -18,7 +17,10 @@ const OtpForm: FC<{ phone: string; onResend: () => void }> = ({
     register,
     handleSubmit,
     formState: { isValid },
-  } = useForm<FormValues>();
+    watch,
+  } = useForm<FormValues>({
+    mode: "onChange", // فعال‌سازی اعتبارسنجی به‌محض تغییر مقدار
+  });
 
   const navigate = useNavigate();
 
@@ -40,6 +42,7 @@ const OtpForm: FC<{ phone: string; onResend: () => void }> = ({
 
     return await response.json();
   };
+
   const mutation = useMutation({
     mutationFn: sendOtp,
     onSuccess: (data) => {
@@ -59,9 +62,14 @@ const OtpForm: FC<{ phone: string; onResend: () => void }> = ({
     mutation.mutate(data);
   };
 
+  const otpValue = watch("OTPCode");
+
   return (
     <div className={styles.form}>
-      <img src="./../../../public/images/otp.png" alt="card icon" />
+      {phone}
+      <div className={styles.imageBox}>
+        <img src="././images/otp.png" alt="card icon" />
+      </div>
       <h2 className={styles.title}>کد پیامک شده رو وارد کنید:</h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
@@ -71,15 +79,28 @@ const OtpForm: FC<{ phone: string; onResend: () => void }> = ({
           </label>
           <input
             type="text"
-            {...register("OTPCode", { required: true })}
-            placeholder="وارد کنید"
+            maxLength={4}
+            inputMode="numeric"
+            {...register("OTPCode", {
+              required: true,
+              pattern: {
+                value: /^\d{4}$/,
+                message: "کد باید ۴ رقم باشد",
+              },
+            })}
+            placeholder="مثلاً 1234"
           />
         </div>
 
-        <button type="submit" className="button" disabled={!isValid}>
+        <button
+          type="submit"
+          className="button"
+          disabled={!isValid || otpValue?.length !== 4}
+        >
           ثبت
         </button>
       </form>
+
       <OtpTimer onResend={onResend} />
     </div>
   );

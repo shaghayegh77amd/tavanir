@@ -83,6 +83,12 @@ input[type="search"]::-webkit-search-cancel-button {
   transform: translate(50%, -50%);
   width: 360px;
   height: 640px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.container::-webkit-scrollbar {
+  display: none;
 }
 .button {
   width: 240px;
