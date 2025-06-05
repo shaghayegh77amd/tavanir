@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./styled.module.scss";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import OtpForm from "../otp";
+import { useNavigate } from "react-router-dom";
 
 type FormValues = {
   FirstName: string;
@@ -18,9 +19,17 @@ const RegisterForm = () => {
     handleSubmit,
     formState: { errors, isValid },
     getValues,
+    setValue,
+    watch,
   } = useForm<FormValues>();
 
   const [formData, setFormData] = useState<FormValues | null>(null);
+  const isWinner = localStorage.getItem("quizWinner");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    !Boolean(isWinner) && navigate("/quiz");
+  }, []);
 
   const sendRegisterData = async (data: FormValues) => {
     const response = await fetch(
@@ -114,14 +123,26 @@ const RegisterForm = () => {
               </label>
               <input
                 type="text"
+                placeholder="09123456789"
                 {...register("MobileNumber", {
                   required: true,
                   pattern: /^09\d{9}$/,
                 })}
-                placeholder="09123456789"
+                onChange={(e) => {
+                  const persianToEnglish = (str: string) =>
+                    str.replace(/[۰-۹]/g, (d) =>
+                      String.fromCharCode(d.charCodeAt(0) - 1728)
+                    );
+
+                  const englishNumber = persianToEnglish(e.target.value);
+                  setValue("MobileNumber", englishNumber, {
+                    shouldValidate: true,
+                  });
+                }}
+                value={watch("MobileNumber") || ""}
               />
               {errors.MobileNumber && (
-                <p className="error">شماره موبایل معتبر نیست</p>
+                <p className={styles.errorText}>شماره موبایل معتبر نیست.</p>
               )}
             </div>
 

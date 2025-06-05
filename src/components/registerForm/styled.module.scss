@@ -26,6 +26,18 @@
     display: flex;
     gap: 8px;
     align-items: center;
+    position: relative;
+    .input {
+      flex: 1;
+    }
+    .errorText {
+      font-size: 12px;
+      line-height: 24px;
+      position: absolute;
+      bottom: -27px;
+      right: 115px;
+      color: #ff0000;
+    }
   }
   label {
     display: block;

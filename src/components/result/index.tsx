@@ -1,10 +1,16 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import styles from "./styles.module.scss";
 import { useNavigate } from "react-router-dom";
 
 const Result: FC<{ wrongIndexes: [] }> = ({ wrongIndexes }) => {
   const winner = !wrongIndexes.length;
   const navigate = useNavigate();
+  useEffect(() => {
+    if (winner) {
+      localStorage.setItem("quizWinner", "true");
+    }
+  }, [winner]);
+
   return (
     <div className={styles.result}>
       <img
