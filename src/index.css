@@ -99,6 +99,7 @@ input[type="search"]::-webkit-search-cancel-button {
   border-radius: 32px;
   position: absolute;
   bottom: 40px;
+  font-weight: bold;
 }
 
 .button:disabled {
