@@ -38,7 +38,9 @@
     color: #b5b5bb;
   }
 }
-
+.sticky {
+  position: fixed;
+}
 .error {
   color: red;
   font-size: 0.8rem;
